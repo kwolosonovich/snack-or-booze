@@ -14,20 +14,25 @@ function App() {
   const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
-    async function getSnacks() {
-      let snacks = await SnackOrBoozeApi.getSnacks();
-      setSnacks(snacks);
-      setIsLoading(false);
-    }
-    getSnacks();
 
-    async function getDrinks() {
-      let drinks = await SnackOrBoozeApi.getDrinks();
-      setDrinks(drinks);
-      setIsLoading(false);
+    const menuItems = () => {
+
+      async function getSnacks() {
+        let snacks = await SnackOrBoozeApi.getSnacks();
+        setSnacks(snacks);
+        setIsLoading(false);
+      }
+      getSnacks();
+
+      async function getDrinks() {
+        let drinks = await SnackOrBoozeApi.getDrinks();
+        setDrinks(drinks);
+        setIsLoading(false);
+      }
+      getDrinks();
     }
-    getDrinks();
-  }, []);
+    menuItems();
+    }, []);
 
   if (isLoading) {
     return <p>Loading &hellip;</p>;

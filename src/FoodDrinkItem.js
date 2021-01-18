@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 
-function FoodItem({ items, cantFind }) {
+function FoodDrinkItem({ items, cantFind }) {
   const { id } = useParams();
 
   let snackDrink = items.find((snackDrink) => snackDrink.id === id);
@@ -28,4 +28,4 @@ function FoodItem({ items, cantFind }) {
   );
 }
 
-export default FoodItem;
+export default FoodDrinkItem;
