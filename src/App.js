@@ -15,14 +15,15 @@ function App() {
   const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
-    
     async function getSnacks() {
       let snacks = await SnackOrBoozeApi.getSnacks();
       setSnacks(snacks);
       setIsLoading(false);
     }
     getSnacks();
+  }, []);
 
+  useEffect(() => {
     async function getDrinks() {
       let drinks = await SnackOrBoozeApi.getDrinks();
       setDrinks(drinks);
@@ -43,23 +44,21 @@ function App() {
           <main>
             <Switch>
               <Route exact path="/">
-                <Home snacks={snacks} />
+                <Home />
               </Route>
+
               <Route exact path="/snacks">
-                <Menu snacks={snacks} title="Snacks" />
+                <Menu name="snacks" snacks={snacks} title="Snacks" />
               </Route>
               <Route path="/snacks/:id">
                 <SnackDrink items={snacks} cantFind="/snacks" />
               </Route>
 
-              <Route exact path="/">
-                <Home drinks={drinks} />
-              </Route>
               <Route exact path="/dirnks">
-                <Menu drinks={drinks} title="Drinks" />
+                <Menu name="drinks" drinks={drinks} title="Drinks" />
               </Route>
               <Route path="/drinks/:id">
-                <SnackDrink items={drinks} cantFind="/drinks" />
+                <SnackDrink name="drinks" items={drinks} cantFind="/drinks" />
               </Route>
               <Route>
                 <p>Hmmm. I can't seem to find what you want.</p>
