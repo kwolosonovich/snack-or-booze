@@ -11,6 +11,7 @@ import Snack from "./FoodItem";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [snacks, setSnacks] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
     async function getSnacks() {
@@ -19,6 +20,13 @@ function App() {
       setIsLoading(false);
     }
     getSnacks();
+
+    async function getDrinks() {
+      let drinks = await SnackOrBoozeApi.getDrinks();
+      setDrinks(drinks);
+      setIsLoading(false);
+    }
+    getDrinks();
   }, []);
 
   if (isLoading) {
@@ -40,12 +48,16 @@ function App() {
             <Route path="/snacks/:id">
               <Snack items={snacks} cantFind="/snacks" />
             </Route>
-            <Route exact path="/dirnks">
-              <Menu snacks={snacks} title="Drinks" />
+
+            <Route exact path="/">
+              <Home drinks={drinks} />
             </Route>
-            {/* <Route path="/drinks/:id">
-              <Snack items={drinks} cantFind="/drinks" />
-            </Route> */}
+            <Route exact path="/dirnks">
+              <Menu drinks={drinks} title="Drinks" />
+            </Route>
+            <Route path="/drinks/:id">
+              <Drink items={drinks} cantFind="/drinks" />
+            </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>
             </Route>
