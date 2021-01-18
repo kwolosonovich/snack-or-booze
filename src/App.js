@@ -40,6 +40,12 @@ function App() {
             <Route path="/snacks/:id">
               <Snack items={snacks} cantFind="/snacks" />
             </Route>
+            <Route exact path="/dirnks">
+              <Menu snacks={snacks} title="Drinks" />
+            </Route>
+            {/* <Route path="/drinks/:id">
+              <Snack items={drinks} cantFind="/drinks" />
+            </Route> */}
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>
             </Route>
