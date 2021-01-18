@@ -5,22 +5,22 @@ import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 function FoodItem({ items, cantFind }) {
   const { id } = useParams();
 
-  let snack = items.find(snack => snack.id === id);
-  if (!snack) return <Redirect to={cantFind} />;
+  let snackDrink = items.find((snackDrink) => snackDrink.id === id);
+  if (!snackDrink) return <Redirect to={cantFind} />;
 
   return (
     <section>
       <Card>
         <CardBody>
           <CardTitle className="font-weight-bold text-center">
-            {snack.name}
+            {snackDrink.name}
           </CardTitle>
-          <CardText className="font-italic">{snack.description}</CardText>
+          <CardText className="font-italic">{snackDrink.description}</CardText>
           <p>
-            <b>Recipe:</b> {snack.recipe}
+            <b>Recipe:</b> {snackDrink.recipe}
           </p>
           <p>
-            <b>Serve:</b> {snack.serve}
+            <b>Serve:</b> {snackDrink.serve}
           </p>
         </CardBody>
       </Card>
