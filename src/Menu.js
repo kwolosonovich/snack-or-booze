@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, Component } from "react";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 import {
@@ -9,8 +9,12 @@ import {
   ListGroup,
   ListGroupItem
 } from "reactstrap";
+import MenuContext from "./MenuContext";
 
-function Menu({ snacks }) {
+function Menu({ snacks, drinks, title, items, value }) {
+
+    // const list = useContext(MenuContext.value);
+
   return (
     <section className="col-md-4">
       <Card>
@@ -23,9 +27,9 @@ function Menu({ snacks }) {
             bulk of the card's content.
           </CardText>
           <ListGroup>
-            {snacks.map(snack => (
-              <Link to={`/snacks/${snack.id}`} key={snack.id}>
-                <ListGroupItem>{snack.name}</ListGroupItem>
+            {list.map((item) => (
+              <Link to={`/${list}/${item.id}`} key={item.id}>
+                <ListGroupItem>{item.name}</ListGroupItem>
               </Link>
             ))}
           </ListGroup>
