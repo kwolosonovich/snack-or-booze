@@ -11,7 +11,6 @@ function Home() {
             <div className="font-weight-bold">
               Welcome to Silicon Valley's premier dive cafe!
             </div>
-            <div >Cat</div>
           </CardTitle>
         </CardBody>
       </Card>

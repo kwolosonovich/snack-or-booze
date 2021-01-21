@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
@@ -14,6 +14,7 @@ function App() {
   const [snacks, setSnacks] = useState([]);
   const [drinks, setDrinks] = useState([]);
 
+  // call up to get list of snacks if state is empty
   useEffect(() => {
     async function getSnacks() {
       let snacks = await SnackOrBoozeApi.getSnacks();
@@ -23,6 +24,7 @@ function App() {
     getSnacks();
   }, []);
 
+  // call up to get list of drinks if state is empty
   useEffect(() => {
     async function getDrinks() {
       let drinks = await SnackOrBoozeApi.getDrinks();

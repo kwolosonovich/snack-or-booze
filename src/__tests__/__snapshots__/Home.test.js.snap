@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="font-weight-bold"
+  >
+    Welcome to Silicon Valley's premier dive cafe!
+  </div>
+</DocumentFragment>
+`;

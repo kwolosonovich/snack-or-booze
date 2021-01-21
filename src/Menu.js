@@ -15,9 +15,10 @@ import MenuContext from "./MenuContext";
 
 function Menu({ name }) {
 
-    let getContext = useContext(MenuContext)
+  // use context to store menu names 
+  let getContext = useContext(MenuContext)
 
-    let menuItems = getContext[name]
+  let menuItems = getContext[name]
 
   return (
     <section className="col-md-4">
@@ -27,11 +28,10 @@ function Menu({ name }) {
             {name} Menu
           </CardTitle>
           <CardText>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Our curent favorites to enjoy:
           </CardText>
           <ListGroup>
-            {menuItems.map((item) => (
+            { !menuItems ? <h1>No current items</h1> : menuItems.map((item) => (
               <Link to={`/${name}/${item.id}`} key={item.id}>
                 <ListGroupItem>{item.name}</ListGroupItem>
               </Link>

@@ -5,6 +5,7 @@ import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 function FoodDrinkItem({ items, cantFind }) {
   const { id } = useParams();
 
+  // get the snack or drink items in array and assign an id
   let snackDrink = items.find((snackDrink) => snackDrink.id === id);
   if (!snackDrink) return <Redirect to={cantFind} />;
 
